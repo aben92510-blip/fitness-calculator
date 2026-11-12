@@ -5,7 +5,6 @@ function calculateCalories() {
     const height = parseFloat(document.getElementById('height').value);
     const activity = parseFloat(document.getElementById('activity').value);
 
-    // التصحيح: التحقق من تعبئة جميع الحقول بما فيها الجنس والنشاط
     if (!age || !weight || !height || !gender || !activity) {
         alert('الرجاء تعبئة جميع الحقول بشكل صحيح');
         return;
@@ -17,7 +16,11 @@ function calculateCalories() {
     } else {
         bmr = (10 * weight) + (6.25 * height) - (5 * age) - 161;
     }
-
-    const tdee = Math.round(bmr * activity);
+      const tdee = Math.round(bmr * activity);
     const weightLoss = tdee - 500;
+
+    // الخطوة الجديدة: عرض النتيجة داخل الصفحة للمستخدم
+    const resultDiv = document.getElementById('result');
+    resultDiv.innerHTML = سعرات الحفاظ على الوزن: <b>${tdee}</b> سعرة حرارية/اليوم<br> +
+                          سعرات خسارة الوزن: <b>${weightLoss}</b> سعرة حرارية/اليوم;
 }
