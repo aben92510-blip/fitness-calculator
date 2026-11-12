@@ -5,8 +5,9 @@ function calculateCalories() {
     const height = parseFloat(document.getElementById('height').value);
     const activity = parseFloat(document.getElementById('activity').value);
 
-    if (!age || !weight || !height) {
-        alert('الرجاء تعبئة جميع الحقول بشكل صحيح!');
+    // التصحيح: التحقق من تعبئة جميع الحقول بما فيها الجنس والنشاط
+    if (!age || !weight || !height || !gender || !activity) {
+        alert('الرجاء تعبئة جميع الحقول بشكل صحيح');
         return;
     }
 
@@ -18,17 +19,5 @@ function calculateCalories() {
     }
 
     const tdee = Math.round(bmr * activity);
-    const weightLoss = tdee - 500; 
-    const weightGain = tdee + 300; 
-
-    const resultDiv = document.getElementById('result');
-    const caloriesText = document.getElementById('caloriesText');
-    const goalText = document.getElementById('goalText');
-
-    caloriesText.innerHTML = سعرات الحفاظ على الوزن: <strong>${tdee} سعرة حرارية</strong>;
-    goalText.innerHTML = `
-        🔥 للتنشيف وحرق الدهون: <strong>${weightLoss} سعرة</strong><br>
-        💪 للتضخيم وبناء العضلات: <strong>${weightGain} سعرة</strong>
-    `;
-
-    resultDiv.style.display = 'block';}
+    const weightLoss = tdee - 500;
+}
